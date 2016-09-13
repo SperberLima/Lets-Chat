@@ -1,0 +1,77 @@
+body {
+	
+	color:white;
+}
+
+.titulo {
+	font-family:Ubuntu2;
+	font-size:4.0em;	
+}
+
+.cmp_txt:focus {
+        outline: none;
+    
+}
+.cmp_txt {
+	margin-top:2%;
+	margin-bottom:3%;
+	border:none;
+	background-color:#FF3434;
+	font-size:1.0em;
+	font-family:Ubuntu;
+	color:white;
+	border-bottom:1px solid white;
+}
+
+.btn {
+	border:none;
+	background:rgba(0,0,0,0.3);
+	font-family:Ubuntu;
+	padding:2% 4%;
+	border-radius:24px;
+	margin-top:23%;
+	margin-left:3%;
+	color:white;
+	box-shadow:0px 5px 2px rgba(0,0,0,0.4);
+}
+
+.btn:active {
+	transform:translateY(4px);
+	box-shadow:0px 1px 2px rgba(0,0,0,0.4);
+}
+
+.check:checked ~ label div  {
+	color: #FF5A5A;	
+}
+
+.bola3 {
+	float:left;
+	margin-left:10%;
+	width:3%;
+	padding:4px;
+	border-radius:50px;
+	border:5px solid #FF9A9A;
+	background-color:#FF5A5A;
+}
+
+.bola4 {
+	padding:3px;
+	border-radius:50px;
+	background-color:#FF9A9A;
+	visibility:hidden;
+}
+
+.check:checked ~ label div div div {
+	visibility:visible;	
+}
+
+@font-face {
+	font-family:Ubuntu;
+	src: url("..\\ubuntu-fonts\\Ubuntu-R.ttf");
+}
+
+@font-face {
+	font-family:Ubuntu2;
+	src: url("..\\ubuntu-fonts\\Ubuntu-B.ttf");
+	font-weight:bold;
+}
