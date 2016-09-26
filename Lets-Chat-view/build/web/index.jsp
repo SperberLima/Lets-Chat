@@ -23,7 +23,7 @@
                         <span id="txt" style="font-size:12px;"></span>
                     </div> 
                     <div class = "txt">
-                        <input size = "20" id="nome" class = "cmp_txt" />
+                        <input size = "20" id="nome" name="nome" class = "cmp_txt" />
                     </div>
                     <div class = "btn">
                         <input type="button" class = "submit" value="Enviar" onClick="ValidaLogin();" />
