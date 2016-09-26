@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Objects;
 import letschat.envio.ListaOnline;
 import letschat.util.Comunicacao;
 import letschat.util.Grupo;
@@ -70,8 +71,6 @@ public class ChatSkeleton extends Thread {
                 case "msg":
                     this.EnviarMsg();
                     break;
-                case "sair":
-                    //this.Sair();
             }
         }
     }
@@ -94,12 +93,11 @@ public class ChatSkeleton extends Thread {
 
         for (int i = 0; i < g1.getSize(); i++) {
             for (int j = 0; j < ListaOnline.getSize(); j++) {
-                if (g1.getGrupo().get(i).getId() == ListaOnline.getUsers().get(j).getId()) {
+                if (Objects.equals(g1.getGrupo().get(i).getId(), ListaOnline.getUsers().get(j).getId())) {
                     ListaOnline.getOnline().get(j).writeUTF("atualizargrupo");
                 }
             }
         }
-
     }
     
     public void EnviarMsg() {

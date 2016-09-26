@@ -5,24 +5,23 @@ import letschat.envio.ListaOnline;
 import letschat.util.Grupo;
 import letschat.util.Usuario;
 
-public class ConfereTempo {
+public class ConfereTempo extends Thread {
 
-    private ConfereTempo() {
+    public ConfereTempo() {}
 
-    }
-
-    public static void Confere() {
+    @Override
+    public void run() {
         ListaOnline lista = ListaOnline.getInstance();
-
+        
         for (Usuario user : lista.getUsers()) {
-            if ((user.getAcesso().getTime() - new Date().getTime()) >= 120000) { // 2 minutos ???
+            if ((user.getAcesso().getTime() - new Date().getTime()) >= 10000) { // 2 minutos ???
                 ConfereTempo.Remover(user);
             }
         }
     }
 
     public static void Remover(Usuario user) {
-        // Tira ele dos grupos em que esta
+        // Tira ele dos grupos em que estah
         for (Grupo b : ListaOnline.getGrupos()) {
             for (Usuario u : b.getGrupo()) {
                 if (u.equals(user)) {

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import lestchat.proxy.ChatSkeleton;
+import lestchat.proxy.threads.ConfereTempo;
 
 public class Servidor {
 
@@ -15,6 +16,8 @@ public class Servidor {
 
             server = new ServerSocket(2223);
 
+            Thread c = new ConfereTempo();
+            c.start();
             while (true) {
 
                 Socket socket = server.accept();
