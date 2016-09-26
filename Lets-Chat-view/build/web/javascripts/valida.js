@@ -1,9 +1,7 @@
 ValidaNome = function (nome) {
-    alert(nome.value);
     if ((nome.value != null) //&&
             //   !(nome.value.matches("([^<|>|\\n]){1,40}"))) {
             ) {
-        alert("true");
         return true;
     }
     return false;
