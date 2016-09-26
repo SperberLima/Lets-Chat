@@ -24,13 +24,7 @@ public class ChatSkeleton extends Thread {
     }
 
     public ChatSkeleton(Socket socket) {
-        try {
-            this.socket = socket;
-            this.reader = Comunicacao.getInput(socket);
-
-        } catch (IOException ex) {
-
-        }
+        this.socket = socket;
     }
 
     public Socket getSocket() {
@@ -43,10 +37,10 @@ public class ChatSkeleton extends Thread {
 
     public void process() throws IOException, ClassNotFoundException {
 
-        writer = Comunicacao.getOutput(socket);
-
+        this.writer = Comunicacao.getOutput(socket);
+        this.reader = Comunicacao.getInput(socket);
+        
         try {
-
             Usuario usuario = (Usuario) reader.readObject();
 
             if (usuario == null) {
@@ -56,7 +50,7 @@ public class ChatSkeleton extends Thread {
 
             ListaOnline.addOnline(writer, user);
 
-            writer.writeObject(usuario);
+        //    writer.writeObject(usuario);
 
         } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();

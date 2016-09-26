@@ -14,7 +14,7 @@ public class Servidor {
 
         try {
 
-            server = new ServerSocket(2223);
+            server = new ServerSocket(2224);
 
             Thread c = new ConfereTempo();
             c.start();
