@@ -13,8 +13,8 @@
     <body>
 
         <div class="barra"> 
-            <a href="jsp/Criar_Grupo.jsp"><div class="barra_item">Criar Grupo</div></a>
-            <a href="./index.jsp"><div class="barra_item">Sair</div></a>
+            <a href="Criar_Grupo.jsp"><div class="barra_item">Criar Grupo</div></a>
+            <a href="Login_Chat.jsp"><div class="barra_item">Sair</div></a>
         </div>
         <div class = "meio" >
             <div class = "esquerda">

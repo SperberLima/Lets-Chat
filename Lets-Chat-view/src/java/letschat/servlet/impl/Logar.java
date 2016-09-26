@@ -10,7 +10,8 @@ public class Logar {
 
     public static String execute(HttpServletRequest request)
             throws ServletException, IOException {
-        String jsp = "/jsp/erro.jsp";
+        String jsp = "jsp/erro.jsp";
+        
         try {
             // Envia o novo usuario atraves do Stub.
             // Chama o grupo de users online
@@ -19,7 +20,7 @@ public class Logar {
                 Usuario user = Http_to_Socket.Logar(nome);
                 if (user != null) {
                     request.setAttribute("user", user);
-                    jsp = "/jsp/Sala_Chat.jsp";
+                    jsp = "jsp/Sala_Chat.jsp";
                 } else {
                     String erro = "Nao foi possivel logar. \nTente novamente mais tarde.";
                     request.setAttribute("erro", erro);
@@ -27,7 +28,7 @@ public class Logar {
                 }
             
         } catch (Exception e) {
-            return jsp = "/jsp/erro.jsp";
+            return jsp = "jsp/erro.jsp";
             
         }
         

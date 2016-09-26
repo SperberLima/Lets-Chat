@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package letschat.servlet;
 
 import letschat.servlet.impl.Logar;
 import java.io.IOException;
+import java.util.Enumeration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,14 +23,13 @@ public class NovoServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         
-        System.out.println("AAAAAAAAAAAAAEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE "+request.toString());
         String acao = request.getParameter("acao");
         
+        System.err.println(acao);
         
         if(acao != null && acao.equals("logar")) {
              jsp = Logar.execute(request);
         }
-        jsp="jsp/Sala_Chat.jsp";
         
         
         
@@ -44,4 +39,14 @@ public class NovoServlet extends HttpServlet {
         
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
