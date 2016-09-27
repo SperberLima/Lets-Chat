@@ -8,6 +8,8 @@
         <link  rel="stylesheet" href="css\\salachat.css">
         <link  rel="stylesheet" href="css\\criargrupo.css">
 
+        <script>
+        </script>    
     </head>
 
     <body>

@@ -23,6 +23,22 @@
         <servlet-name>NovoServlet</servlet-name>
         <servlet-class>letschat.servlet.Logar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CriarGrupo</servlet-name>
+        <servlet-class>letschat.servlet.CGCriar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CriarGrupo</servlet-name>
+        <url-pattern>/CriarGrupo</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Sala_Chat</servlet-name>
+        <servlet-class>letschat.servlet.Sala_Chat</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Sala_Chat</servlet-name>
+        <url-pattern>/Sala_Chat</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>

@@ -38,25 +38,21 @@ public class Grupo {
     }
     
     public Usuario remover (Usuario user) {
-        
         for(int i = 0; i < users.size() ; i++ ) {
-            if(users.get(i).getId() == user.getId()) {
+            if(users.get(i).getId().equals(user.getId())) {
                 users.remove(users.get(i));
             }
         }
-        
         return null;
     }
 
     
     public boolean Pesquisa(Long id) {
-        
         for(Usuario usuario : users) {
-            if(usuario.getId() == id ) {
+            if(usuario.getId().equals(id) ) {
                 return true;
             }
         }
-        
         return false;
     }
 
