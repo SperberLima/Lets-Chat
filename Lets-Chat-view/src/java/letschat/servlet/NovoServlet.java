@@ -24,7 +24,8 @@ public class NovoServlet extends HttpServlet {
             String nome = request.getParameter("nome");
 
             if (nome != null) {
-                Http_to_Socket.Logar(nome);
+                Http_to_Socket user = new Http_to_Socket();
+                user.Logar(nome);
                 request.setAttribute("nome", nome);
                 jsp = "jsp/Sala_Chat.jsp";
             } else {

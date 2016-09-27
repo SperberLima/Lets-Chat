@@ -17,7 +17,8 @@ public class Logar {
             // Chama o grupo de users online
             String nome = request.getParameter("usuario");
             
-                Usuario user = Http_to_Socket.Logar(nome);
+                Http_to_Socket user = new Http_to_Socket();
+                user.Logar(nome);
                 if (user != null) {
                     request.setAttribute("user", user);
                     jsp = "jsp/Sala_Chat.jsp";
