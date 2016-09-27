@@ -18,6 +18,20 @@ function ValidaLogin() {
     }
 }
 
+function EnviarMsg(msg) {
+    
+    caminhourl = "/Lets-Chat-view/Sala_Chat?bora=logar";
+    document.forms[0].action = caminhourl;
+    window.document.forms[0].submit();
+    
+}
+
+
+
+
+
+
+
 var refreshUsers = setInterval(function(){
     
     var http = new XMLHttpRequest();    
@@ -158,7 +172,6 @@ var refreshMSG = setInterval(function(){
 },1000);
 
 function criarGrupo(){
-     alert("CODIFIQUE AQUI O SEU MONSTRO INSIROSO");
 }
 
 function ajaxCallGet(func, dest){

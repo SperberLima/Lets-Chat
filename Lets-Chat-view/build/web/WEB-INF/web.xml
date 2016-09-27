@@ -21,7 +21,7 @@
     </servlet>
     <servlet>
         <servlet-name>NovoServlet</servlet-name>
-        <servlet-class>letschat.servlet.NovoServlet</servlet-class>
+        <servlet-class>letschat.servlet.Logar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>

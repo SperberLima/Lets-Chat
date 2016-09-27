@@ -5,6 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import lestchat.proxy.ChatSkeleton;
 import lestchat.proxy.threads.ConfereTempo;
+import letschat.envio.ListaOnline;
 
 public class Servidor {
 
@@ -15,13 +16,13 @@ public class Servidor {
         try {
 
             server = new ServerSocket(2224);
-
             Thread c = new ConfereTempo();
             c.start();
             while (true) {
 
                 Socket socket = server.accept();
                 ChatSkeleton chat = new ChatSkeleton(socket);
+                ListaOnline.getInstance().addChat(chat);
                 Thread t = new Thread(chat);
                 t.start();
             }

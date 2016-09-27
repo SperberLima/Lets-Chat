@@ -7,6 +7,9 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Objects;
 import letschat.envio.ListaOnline;
+import letschat.exception.PersistenciaException;
+import letschat.service.IManterUsuario;
+import letschat.services.impl.ManterUsuario;
 import letschat.util.Comunicacao;
 import letschat.util.Grupo;
 import letschat.util.Mensagem;
@@ -19,6 +22,7 @@ public class ChatSkeleton extends Thread {
     private ObjectOutputStream writer;
     private Usuario user;
     private ArrayList<Grupo> grupos;
+    private ArrayList<Mensagem> msgs;
 
     private ChatSkeleton() {
     }
@@ -35,6 +39,47 @@ public class ChatSkeleton extends Thread {
         this.socket = socket;
     }
 
+    public ObjectInputStream getReader() {
+        return reader;
+    }
+
+    public void setReader(ObjectInputStream reader) {
+        this.reader = reader;
+    }
+
+    public ObjectOutputStream getWriter() {
+        return writer;
+    }
+
+    public void setWriter(ObjectOutputStream writer) {
+        this.writer = writer;
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+
+    public ArrayList<Grupo> getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(ArrayList<Grupo> grupos) {
+        this.grupos = grupos;
+    }
+
+    public ArrayList<Mensagem> getMsgs() {
+        return msgs;
+    }
+
+    public void setMsgs(ArrayList<Mensagem> msgs) {
+        this.msgs = msgs;
+    }
+    
+
     public void process() throws IOException, ClassNotFoundException {
 
         this.writer = Comunicacao.getOutput(socket);
@@ -44,10 +89,11 @@ public class ChatSkeleton extends Thread {
             Usuario usuario = (Usuario) reader.readObject();
 
             if (usuario == null) {
-                throw new Exception("O usuario deve ser informado");
+                throw new PersistenciaException("O usuario deve ser informado");
             }
             user = usuario;
-
+            IManterUsuario u = new ManterUsuario();
+            u.Logar(user);
             ListaOnline.addOnline(writer, user);
 
         //    writer.writeObject(usuario);
@@ -95,7 +141,8 @@ public class ChatSkeleton extends Thread {
     }
     
     public void EnviarMsg() {
-
+        // Deixe as msgs na Thread e o Cliente acessa o servidor em busca delas...
+        // AJAX entrando em Açao
         Mensagem msg;
 
         try {
@@ -114,7 +161,7 @@ public class ChatSkeleton extends Thread {
                     String str = this.user.getNome()
                             + " disse p/ todos: "
                             + msg.getMsg();
-
+                    
                     ListaOnline.getOnline().get(i).writeUTF(str);
                 }
             } else {

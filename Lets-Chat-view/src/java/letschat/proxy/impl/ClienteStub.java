@@ -7,6 +7,7 @@ import java.net.Socket;
 import letschat.util.Mensagem;
 import letschat.proxy.IChat;
 import letschat.util.Comunicacao;
+import letschat.util.Grupo;
 import letschat.util.Usuario;
 
 public class ClienteStub implements IChat<Mensagem> {
@@ -15,8 +16,9 @@ public class ClienteStub implements IChat<Mensagem> {
     private int porta;
     private Socket socket;
 
-    private ClienteStub() {}
-    
+    private ClienteStub() {
+    }
+
     public ClienteStub(String host, int porta) {
         try {
             this.host = host;
@@ -42,27 +44,45 @@ public class ClienteStub implements IChat<Mensagem> {
     public void setPorta(int porta) {
         this.porta = porta;
     }
+    
+    @Override
+    public Grupo getOnline() {
+        ObjectOutputStream writer;
+        ObjectInputStream reader;
+
+        try {
+            writer = Comunicacao.getOutput(socket);
+            reader = Comunicacao.getInput(socket);
+
+            writer.writeUTF("obterListaOnline");
+            return (Grupo) reader.readObject();
+
+        } catch (IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 
     @Override
     public Usuario Logar(String Nome) {
         ObjectOutputStream writer;
-        ObjectInputStream  reader;
-    
+        ObjectInputStream reader;
+
         try {
             writer = Comunicacao.getOutput(socket);
-            reader = Comunicacao.getInput(socket);                 
-            
+            reader = Comunicacao.getInput(socket);
+
             Usuario user = new Usuario();
-            
+
             user.setNome(Nome);
-            writer.writeObject(user);            
+            writer.writeObject(user);
             writer.flush();
-            
+
             user = (Usuario) reader.readObject();
-           
+
             return user;
-            
-        } catch(IOException | ClassNotFoundException ex) {
+
+        } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
             return null;
         }
@@ -70,41 +90,41 @@ public class ClienteStub implements IChat<Mensagem> {
 
     @Override
     public String ReceberMensagem() {
-        ObjectInputStream  reader;
-        
+        ObjectInputStream reader;
+
         try {
-            
-            reader = Comunicacao.getInput(socket);                 
-            
+
+            reader = Comunicacao.getInput(socket);
+
             String msg = reader.readUTF();
-            
+
             return msg;
-            
-        } catch(IOException ex) {
+
+        } catch (IOException ex) {
             ex.printStackTrace();
             return null;
         }
-        
+
     }
 
     @Override
     public boolean EnviarMensagem(Mensagem mensagem) {
-        ObjectInputStream  reader;
+        ObjectInputStream reader;
         ObjectOutputStream writer;
-        
+
         try {
-            
-            reader = Comunicacao.getInput(socket);                 
+
+            reader = Comunicacao.getInput(socket);
             writer = Comunicacao.getOutput(socket);
-            
+
             writer.writeUTF("msg");
-            
+
             writer.writeUTF(mensagem.getMsg());
-            
+
             return true;
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
-            
+
             return false;
         }
     }
