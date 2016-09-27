@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Sala_Chat extends HttpServlet {
 
-
     private String jsp = "jsp/erro.jsp";
 
     @Override
@@ -40,5 +39,10 @@ public class Sala_Chat extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher(jsp);
         rd.forward(request, response);
 
+    }
+    
+    public void atualiza() {
+        
+        
     }
 }

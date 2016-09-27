@@ -9,7 +9,6 @@ import java.util.Objects;
 import letschat.envio.ListaOnline;
 import letschat.exception.PersistenciaException;
 import letschat.service.IManterUsuario;
-import letschat.services.impl.ManterUsuario;
 import letschat.util.Comunicacao;
 import letschat.util.Grupo;
 import letschat.util.Mensagem;
@@ -92,9 +91,6 @@ public class ChatSkeleton extends Thread {
                 throw new PersistenciaException("O usuario deve ser informado");
             }
             user = usuario;
-            IManterUsuario u = new ManterUsuario();
-            
-            u.Logar(user);
 
         } catch (IOException | ClassNotFoundException | PersistenciaException ex) {
             ex.printStackTrace();
@@ -136,7 +132,7 @@ public class ChatSkeleton extends Thread {
         for (int i = 0; i < g1.getSize(); i++) {
             for (int j = 0; j < ListaOnline.getSize(); j++) {
                 if (Objects.equals(g1.getGrupo().get(i).getId(), ListaOnline.getTodos().get(j).user.getId())) {
-                    ListaOnline.getTodos().get(j).writeUTF("atualizargrupo");
+                    ListaOnline.getTodos().get(j).grupos.add(g1);
                 }
             }
         }
@@ -177,8 +173,6 @@ public class ChatSkeleton extends Thread {
     }
     
     public void EnviarMsg() {
-        // Deixe as msgs na Thread e o Cliente acessa o servidor em busca delas...
-        // AJAX entrando em Açao
         Mensagem msg;
 
         try {

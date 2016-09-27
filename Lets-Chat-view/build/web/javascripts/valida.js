@@ -50,7 +50,7 @@ var refreshUsers = setInterval(function(){
         users.innerHTML = username;
     };
     
-    http.open("GET", "?acao=userList&type=async", true);
+    http.open("GET", "/Sala_Chat?acao=userList&type=async", true);
     http.send();
     
 },5000);
@@ -78,7 +78,7 @@ var refreshUsers = setInterval(function(){
         users.innerHTML = username;
     };
     
-    http.open("GET", "?acao=userList&type=async", true);
+    http.open("GET", "/Sala_Chat?acao=userList&type=async", true);
     http.send();
     
 },5000);
@@ -106,7 +106,7 @@ var refreshGrupos = setInterval(function(){
         groups.innerHTML = username;
     };
     
-    http.open("GET", "?acao=groupList&type=async", true);
+    http.open("GET", "/Sala_Chat?acao=groupList&type=async", true);
     http.send();
     
 },5000);
@@ -115,7 +115,7 @@ var refreshGrupos = setInterval(function(){
 var update = setInterval(function(){
     
     var http = new XMLHttpRequest();    
-    http.open("GET", "?acao=Update&type=async", true);
+    http.open("GET", "/Sala_Chat?acao=Update&type=async", true);
     http.send();
     
 },5000);
@@ -161,7 +161,7 @@ var refreshMSG = setInterval(function(){
         }
     };
     
-    http.open("GET", "?acao=getMessage&type=async", true);
+    http.open("GET", "/Sala_Chat?acao=getMessage&type=async", true);
     http.send();
     
 },1000);
