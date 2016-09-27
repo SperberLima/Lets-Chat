@@ -27,11 +27,6 @@ function EnviarMsg(msg) {
 }
 
 
-
-
-
-
-
 var refreshUsers = setInterval(function(){
     
     var http = new XMLHttpRequest();    

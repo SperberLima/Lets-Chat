@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import letschat.convertion.Http_to_Socket;
-import letschat.util.Usuario;
 
 public class NovoServlet extends HttpServlet {
 
