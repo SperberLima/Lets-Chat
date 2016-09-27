@@ -93,14 +93,10 @@ public class ChatSkeleton extends Thread {
             }
             user = usuario;
             IManterUsuario u = new ManterUsuario();
+            
             u.Logar(user);
-            ListaOnline.addOnline(writer, user);
 
-        //    writer.writeObject(usuario);
-
-        } catch (IOException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (Exception ex) {
+        } catch (IOException | ClassNotFoundException | PersistenciaException ex) {
             ex.printStackTrace();
         }
         while (true) {
@@ -110,6 +106,12 @@ public class ChatSkeleton extends Thread {
                     break;
                 case "msg":
                     this.EnviarMsg();
+                    break;
+                case "msgpendente":
+                    this.MsgsPendentes();
+                    break;
+                case "grupopendente":
+                    this.GruposPendentes();
                     break;
             }
         }
@@ -133,10 +135,44 @@ public class ChatSkeleton extends Thread {
 
         for (int i = 0; i < g1.getSize(); i++) {
             for (int j = 0; j < ListaOnline.getSize(); j++) {
-                if (Objects.equals(g1.getGrupo().get(i).getId(), ListaOnline.getUsers().get(j).getId())) {
-                    ListaOnline.getOnline().get(j).writeUTF("atualizargrupo");
+                if (Objects.equals(g1.getGrupo().get(i).getId(), ListaOnline.getTodos().get(j).user.getId())) {
+                    ListaOnline.getTodos().get(j).writeUTF("atualizargrupo");
                 }
             }
+        }
+    }
+    
+    public void MsgsPendentes() {
+        try {
+            reader = Comunicacao.getInput(socket);
+            writer = Comunicacao.getOutput(socket);
+            
+            writer.writeObject(msgs);
+            
+            msgs = null;
+            System.gc();
+            
+            msgs = new ArrayList<>();
+            
+        } catch(IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void GruposPendentes() {
+        try {
+            reader = Comunicacao.getInput(socket);
+            writer = Comunicacao.getOutput(socket);
+            
+            writer.writeObject(grupos);
+            
+            grupos = null;
+            System.gc();
+            
+            grupos = new ArrayList<>();
+            
+        } catch(IOException ex) {
+            ex.printStackTrace();
         }
     }
     
@@ -157,25 +193,28 @@ public class ChatSkeleton extends Thread {
 
             if (msg.getDestinatario().getSize() == ListaOnline.getSize()) {
                 for (int i = 0; i < ListaOnline.getSize(); i++) {
-                    ListaOnline.getOnline().get(i).writeUTF("receber");
                     String str = this.user.getNome()
                             + " disse p/ todos: "
                             + msg.getMsg();
                     
-                    ListaOnline.getOnline().get(i).writeUTF(str);
+                    msg.setMsg(str);
+                    
+                    ListaOnline.getTodos().get(i).msgs.add(msg);
+                      
                 }
             } else {
                 for (int i = 0; i < ListaOnline.getSize(); i++) {
-                    if (msg.getDestinatario().Pesquisa(ListaOnline.getUsers().get(i).getId())) {
-                        ListaOnline.getOnline().get(i).writeUTF("receber");
+                    if (msg.getDestinatario().Pesquisa(ListaOnline.getTodos().get(i).user.getId())) {
 
                         String str = this.user.getNome()
                                 + " disse para "
                                 + msg.getDestinatario().getNome()
                                 + " : "
                                 + msg.getMsg();
-
-                        ListaOnline.getOnline().get(i).writeUTF(str);
+                        msg.setMsg(str);
+                        
+                        ListaOnline.getTodos().get(i).msgs.add(msg);
+                        
                     }
                 }
             }
