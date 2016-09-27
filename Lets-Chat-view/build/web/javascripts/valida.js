@@ -11,7 +11,7 @@ function ValidaLogin() {
 
 function EnviarMsg(msg) {
     
-    caminhourl = "/Lets-Chat-view/Sala_Chat?bora=logar";
+    caminhourl = "/Lets-Chat-view/Sala_Chat?bora=enviar";
     document.forms[0].action = caminhourl;
     window.document.forms[0].submit();
     
@@ -35,7 +35,7 @@ var refreshUsers = setInterval(function(){
             
             for (i = 0; i < u.length; i++) {
                username += "<li class=\"item_lista\">" +
-                            "<input type=\"radio\" class = \"check\" name = \"cv\" id = \"o" + i + "\" value=\"" + u[i].childNodes[0].nodeValue + "\" checked>" +		
+                            "<input type=\"radio\" onclick=\"trocaMensagem();\" class = \"check\" name = \"cv\" id = \"o" + i + "\" value=\"" + u[i].childNodes[0].nodeValue + "\" checked>" +		
                             "<label for=\"o" + i + "\">" +
                                 "<div class=\"opcao\">" + u[i].childNodes[0].nodeValue + 
                                 "</div>" +
@@ -51,7 +51,7 @@ var refreshUsers = setInterval(function(){
     
 },5000);
 
-document.getElementsByName("cv").onclick = function() {
+document.getElementById("o1").onclick = function() {
     var radios = document.getElementsByName("cv");
 
     var msg = document.getElementById("msg");
@@ -81,7 +81,7 @@ var refreshGrupos = setInterval(function(){
             
             for (i = 0; i < u.length; i++) {
                username += "<li class=\"item_lista\">" +
-                            "<input type=\"radio\" class = \"check\" name = \"cv\" id = \"o" + i + "\" value=\"" + u[i].childNodes[0].nodeValue + "\" checked>" +		
+                            "<input type=\"radio\" onclick=\"trocaMensagem();\" class = \"check\" name = \"cv\" id = \"o" + i + "\" value=\"" + u[i].childNodes[0].nodeValue + "\" checked>" +		
                             "<label for=\"o" + i + "\">" +
                                 "<div class=\"opcao\">" + u[i].childNodes[0].nodeValue + 
                                 "</div>" +

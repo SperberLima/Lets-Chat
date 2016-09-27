@@ -9,8 +9,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Sala Principal</title>
-        
-        
+
+
         <link  rel="stylesheet" href="css/salachat.css">
         <link  rel="stylesheet" href="css/criargrupo.css">
 
@@ -30,21 +30,15 @@
 
                 <div class = "usuarios">
                     <ul id="users">
+                        <li class="item_lista" >
 
-                        
-                        <%
-                            for(int i = 0 ; i < gals.size(); i++ ) {
-                        %>
-                        <li class="item_lista">
-
-                            <input type="radio" class = "check" name = "cv" id = "o1" value="Marina" checked>		
+                            <input type="radio" onclick="alert('absbhkdabhs')" class = "check" name = "cv" id = "o1" value="Marina"  checked>		
                             <label for="o1">
                                 <div class="opcao">Marina
                                 </div>
                             </label>
 
                         </li>
-                        <%}%>
                         <li class="item_lista">
                             <input type="radio" class = "check" name = "cv" id = "o2" value="Luana">		
                             <label for="o2">
@@ -92,7 +86,7 @@
             <div class = "direita">
                 <!-- Mensagens -->
                 <div class="Mensagem" id="msg">
-                    
+
                 </div>
             </div>
         </div>

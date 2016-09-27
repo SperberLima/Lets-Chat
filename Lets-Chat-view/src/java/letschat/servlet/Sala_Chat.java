@@ -25,6 +25,9 @@ public class Sala_Chat extends HttpServlet {
                 case "userList":
                     //Transforma em XML
                     break;
+                case "enviar":
+                    enviarMsg();
+                    break;
                         
             }
             
@@ -44,6 +47,10 @@ public class Sala_Chat extends HttpServlet {
     
     public void atualiza() {
         
+        
+    }
+    
+    public void enviarMsg() {
         
     }
 }

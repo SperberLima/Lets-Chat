@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import letschat.convertion.Http_to_Socket;
+import letschat.proxy.IChat;
+import letschat.proxy.impl.ClienteStub;
 
 public class NovoServlet extends HttpServlet {
-
+    private IChat chat;
     private String jsp = "jsp/erro.jsp";
 
     @Override
@@ -24,7 +26,7 @@ public class NovoServlet extends HttpServlet {
 
             if (nome != null) {
                 Http_to_Socket user = new Http_to_Socket();
-                user.Logar(nome);
+                chat = user.Logar(nome);
                 request.setAttribute("nome", nome);
                 jsp = "jsp/Sala_Chat.jsp";
             } else {
