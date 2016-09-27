@@ -6,6 +6,9 @@
         
         <link  rel="stylesheet" href="css\\salachat.css">
         <link  rel="stylesheet" href="css\\criargrupo.css">
+        
+        <script type="text/javascript" language="JavaScript" src="javascripts/valida.js" >
+        </script>
     </head>
 
     <body>

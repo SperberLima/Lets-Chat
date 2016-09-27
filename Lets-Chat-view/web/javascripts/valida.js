@@ -1,21 +1,11 @@
-ValidaNome = function (nome) {
 
-    if ((nome.value != null) //&&
-            //   !(nome.value.matches("([^<|>|\\n]){1,40}"))) {
-            ) {
-        return true;
-    }
-    return false;
-};
 
 function ValidaLogin() {
-    alert("BORA");
     var nome = document.getElementById("nome");
-    if (ValidaNome(nome)) { 
         caminhourl = "/Lets-Chat-view/NovoServlet?bora=logar";
         document.forms[0].action = caminhourl;
         window.document.forms[0].submit();
-    }
+    
 }
 
 function EnviarMsg(msg) {
@@ -60,6 +50,18 @@ var refreshUsers = setInterval(function(){
     
 },5000);
 
+document.getElementsByName("cv").onclick = function() {
+    var radios = document.getElementsByName("cv");
+
+    var msg = document.getElementById("msg");
+    alert("bhkzfjkszfdnlsajdfjksdfsd");
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            msg.innerHTML = msgs;
+        }
+    }
+};
+
 var refreshGrupos = setInterval(function(){
     
     var http = new XMLHttpRequest();    
@@ -102,6 +104,7 @@ var update = setInterval(function(){
     
 },5000);
 
+var msgs;
 
 var refreshMSG = setInterval(function(){
     

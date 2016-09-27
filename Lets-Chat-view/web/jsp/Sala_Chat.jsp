@@ -14,8 +14,8 @@
         <link  rel="stylesheet" href="css\\salachat.css">
         <link  rel="stylesheet" href="css\\criargrupo.css">
 
-        <script>
-        </script>    
+        <script type="text/javascript" language="JavaScript" src="javascripts/valida.js" >
+        </script> 
     </head>
 
     <body>
@@ -92,6 +92,7 @@
             <div class = "direita">
                 <!-- Mensagens -->
                 <div class="Mensagem" id="msg">
+                    
                 </div>
             </div>
         </div>
