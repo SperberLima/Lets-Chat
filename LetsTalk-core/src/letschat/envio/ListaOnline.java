@@ -1,14 +1,14 @@
 package letschat.envio;
 
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import lestchat.proxy.ChatSkeleton;
 import letschat.util.Grupo;
-import letschat.util.Usuario;
 
 public class ListaOnline {
-    private static ArrayList<ObjectOutputStream> online = new ArrayList<>();
+    private static ArrayList<ChatSkeleton> todos = new ArrayList<>();
+    //private static ArrayList<ObjectOutputStream> online = new ArrayList<>();
     private static ArrayList<Grupo> grupos = new ArrayList<>();
-    private static ArrayList<Usuario> users = new ArrayList<>();
+    //private static ArrayList<Usuario> users = new ArrayList<>();
     private static ListaOnline instance = null;
     
     
@@ -26,26 +26,9 @@ public class ListaOnline {
     }
     
     public static int getSize() {
-        return ListaOnline.online.size();
+        return ListaOnline.todos.size();
     }
     
-    public static void addOnline(ObjectOutputStream user, Usuario usuario) {
-        ListaOnline.online.add(user);
-        ListaOnline.users.add(usuario);
-    }
-    
-    public static void remOnline(ObjectOutputStream user) {
-        ListaOnline.online.remove(user);
-    }
-
-    public static ArrayList<Usuario> getUsers() {
-        return users;
-    }
-
-    public static void setUsers(ArrayList<Usuario> users) {
-        ListaOnline.users = users;
-    }
-
     public static ArrayList<Grupo> getGrupos() {
         return grupos;
     }
@@ -54,12 +37,20 @@ public class ListaOnline {
         ListaOnline.grupos = grupos;
     }
 
-    public static ArrayList<ObjectOutputStream> getOnline() {
-        return online;
+    public static void addChat(ChatSkeleton chat) {
+        ListaOnline.todos.add(chat);
     }
 
-    public static void setOnline(ArrayList<ObjectOutputStream> online) {
-        ListaOnline.online = online;
+    public static void remChat(ChatSkeleton chat) {
+        ListaOnline.todos.remove(chat);
+    }
+    
+    public static ArrayList<ChatSkeleton> getTodos() {
+        return todos;
+    }
+
+    public static void setTodos(ArrayList<ChatSkeleton> todos) {
+        ListaOnline.todos = todos;
     }
     
 }

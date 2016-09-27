@@ -1,9 +1,10 @@
 package letschat.dao;
 
+import letschat.exception.PersistenciaException;
+
 public interface IMensagemDAO<Entidade> {
 
-    public boolean EnviarMsg(Entidade e);
-
-    public Entidade ReceberMsg();
+    public Long inserir(Entidade e) throws PersistenciaException;
+    public Entidade consultarPorNome(String nome)throws PersistenciaException;
 
 }

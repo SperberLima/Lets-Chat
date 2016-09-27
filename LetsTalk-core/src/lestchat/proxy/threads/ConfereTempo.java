@@ -1,6 +1,7 @@
 package lestchat.proxy.threads;
 
 import java.util.Date;
+import lestchat.proxy.ChatSkeleton;
 import letschat.envio.ListaOnline;
 import letschat.util.Grupo;
 import letschat.util.Usuario;
@@ -13,26 +14,26 @@ public class ConfereTempo extends Thread {
     public void run() {
         ListaOnline lista = ListaOnline.getInstance();
         
-        for (Usuario user : lista.getUsers()) {
-            if ((user.getAcesso().getTime() - new Date().getTime()) >= 10000) { // 2 minutos ???
+        for (ChatSkeleton user : ListaOnline.getTodos()) {
+            if ((user.getUser().getAcesso().getTime() - new Date().getTime()) >= 10000) { // 2 minutos ???
                 ConfereTempo.Remover(user);
             }
         }
     }
 
-    public static void Remover(Usuario user) {
+    public static void Remover(ChatSkeleton user) {
         // Tira ele dos grupos em que estah
         for (Grupo b : ListaOnline.getGrupos()) {
             for (Usuario u : b.getGrupo()) {
-                if (u.equals(user)) {
-                    b.getGrupo().remove(user);
+                if (u.equals(user.getUser())) {
+                    b.getGrupo().remove(user.getUser());
                 }
             }
         }
 
-        for (Usuario u : ListaOnline.getUsers()) {
+        for (ChatSkeleton u : ListaOnline.getTodos()) {
             if (u.equals(user)) {
-                ListaOnline.getUsers().remove(user);
+                ListaOnline.getTodos().remove(user);
             }
         }
     }

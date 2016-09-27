@@ -1,7 +1,7 @@
 package letschat.util;
 
 public class Mensagem {
-
+    private Long id;
     private Grupo destinatario;
     private String msg;
 

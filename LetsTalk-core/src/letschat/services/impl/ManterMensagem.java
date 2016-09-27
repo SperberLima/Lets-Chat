@@ -16,7 +16,7 @@ public class ManterMensagem implements IManterMensagem<Mensagem> {
     @Override
     public void EnviarMensagem(Mensagem ent) {
         IMensagemDAO msg = new MensagemDAO();
-        msg.EnviarMsg(ent);
+        msg.SetMsg(ent);
     }
 
 }
