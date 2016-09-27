@@ -2,10 +2,11 @@
 
 function ValidaLogin() {
     var nome = document.getElementById("nome");
+    if(nome != null) {
         caminhourl = "/Lets-Chat-view/NovoServlet?bora=logar";
         document.forms[0].action = caminhourl;
         window.document.forms[0].submit();
-    
+    }
 }
 
 function EnviarMsg(msg) {

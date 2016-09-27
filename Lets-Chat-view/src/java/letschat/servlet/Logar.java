@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import letschat.convertion.Http_to_Socket;
-import letschat.domain.Grupo;
 
 public class Logar extends HttpServlet {
 
@@ -26,8 +25,6 @@ public class Logar extends HttpServlet {
             if (nome != null) {
                 Http_to_Socket novo = new Http_to_Socket();
                 novo.Logar(nome);
-                Grupo grupo = novo.getOnline();
-                request.setAttribute("grupo", grupo);
                 request.setAttribute("nome", nome);
                 jsp = "jsp/Sala_Chat.jsp";
             } else {

@@ -11,8 +11,8 @@
         <title>Sala Principal</title>
         
         
-        <link  rel="stylesheet" href="css\\salachat.css">
-        <link  rel="stylesheet" href="css\\criargrupo.css">
+        <link  rel="stylesheet" href="css/salachat.css">
+        <link  rel="stylesheet" href="css/criargrupo.css">
 
         <script type="text/javascript" language="JavaScript" src="javascripts/valida.js" >
         </script> 

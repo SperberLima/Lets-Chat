@@ -46,24 +46,6 @@ public class ClienteStub implements IChat<Mensagem> {
     }
     
     @Override
-    public Grupo getOnline() {
-        ObjectOutputStream writer;
-        ObjectInputStream reader;
-
-        try {
-            writer = Comunicacao.getOutput(socket);
-            reader = Comunicacao.getInput(socket);
-
-            writer.writeUTF("obterListaOnline");
-            return (Grupo) reader.readObject();
-
-        } catch (IOException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    }
-
-    @Override
     public Usuario Logar(String Nome) {
         ObjectOutputStream writer;
         ObjectInputStream reader;

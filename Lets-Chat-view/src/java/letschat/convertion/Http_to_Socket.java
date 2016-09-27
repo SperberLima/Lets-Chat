@@ -18,7 +18,5 @@ public class Http_to_Socket {
         chat.Logar(nome);
     }
 
-    public Grupo getOnline() {
-        return chat.getOnline();
-    }
+   
 }
