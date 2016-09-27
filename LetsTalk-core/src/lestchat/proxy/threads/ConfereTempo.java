@@ -3,8 +3,8 @@ package lestchat.proxy.threads;
 import java.util.Date;
 import lestchat.proxy.ChatSkeleton;
 import letschat.envio.ListaOnline;
-import letschat.util.Grupo;
-import letschat.util.Usuario;
+import letschat.domain.Grupo;
+import letschat.domain.Usuario;
 
 public class ConfereTempo extends Thread {
 

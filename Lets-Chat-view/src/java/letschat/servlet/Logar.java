@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import letschat.convertion.Http_to_Socket;
-import letschat.util.Grupo;
+import letschat.domain.Grupo;
 
 public class Logar extends HttpServlet {
 

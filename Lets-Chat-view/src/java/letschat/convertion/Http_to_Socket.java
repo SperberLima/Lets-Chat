@@ -2,7 +2,7 @@ package letschat.convertion;
 
 import letschat.proxy.IChat;
 import letschat.proxy.impl.ClienteStub;
-import letschat.util.Grupo;
+import letschat.domain.Grupo;
 
 public class Http_to_Socket {
 

@@ -1,7 +1,7 @@
 package letschat.proxy;
 
-import letschat.util.Usuario;
-import letschat.util.Grupo;
+import letschat.domain.Usuario;
+import letschat.domain.Grupo;
 
 public interface IChat<Entidade> {
     

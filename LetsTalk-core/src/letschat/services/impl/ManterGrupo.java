@@ -5,8 +5,8 @@ import letschat.dao.IGrupoDAO;
 import letschat.dao.impl.GrupoDAO;
 import letschat.exception.PersistenciaException;
 import letschat.service.IManterGrupo;
-import letschat.util.Grupo;
-import letschat.util.Usuario;
+import letschat.domain.Grupo;
+import letschat.domain.Usuario;
 
 public class ManterGrupo implements IManterGrupo<Grupo> {
     

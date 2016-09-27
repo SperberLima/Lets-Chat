@@ -19,13 +19,14 @@ public class Sala_Chat extends HttpServlet {
             // Envia o novo usuario atraves do Stub.
             // Chama o grupo de users online
 
-            String comando = request.getParameter("comando");
+            String comando = request.getParameter("acao");
 
-            switch(comando) {}
-            
-            
-            
-            
+            switch(comando) {
+                case "userList":
+                    //Transforma em XML
+                    break;
+                        
+            }
             
                 String erro = "Nao foi possivel logar. \nTente novamente mais tarde.";
                 request.setAttribute("erro", erro);

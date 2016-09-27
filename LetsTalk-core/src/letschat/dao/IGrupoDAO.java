@@ -1,6 +1,6 @@
 package letschat.dao;
 
-import letschat.util.Grupo;
+import letschat.domain.Grupo;
 
 public interface IGrupoDAO extends IGenericNamedDAO<Grupo> {
     

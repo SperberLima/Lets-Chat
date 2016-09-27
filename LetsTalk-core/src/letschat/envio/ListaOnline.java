@@ -2,7 +2,7 @@ package letschat.envio;
 
 import java.util.ArrayList;
 import lestchat.proxy.ChatSkeleton;
-import letschat.util.Grupo;
+import letschat.domain.Grupo;
 
 public class ListaOnline {
     private static ArrayList<ChatSkeleton> todos = new ArrayList<>();

@@ -1,4 +1,4 @@
-package letschat.util;
+package letschat.domain;
 
 public class Mensagem {
     private Long id;

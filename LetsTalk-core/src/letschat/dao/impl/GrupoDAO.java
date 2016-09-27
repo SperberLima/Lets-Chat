@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import letschat.dao.IGrupoDAO;
 import letschat.envio.ListaOnline;
 import letschat.exception.PersistenciaException;
-import letschat.util.Grupo;
+import letschat.domain.Grupo;
 
 public class GrupoDAO implements IGrupoDAO {
 

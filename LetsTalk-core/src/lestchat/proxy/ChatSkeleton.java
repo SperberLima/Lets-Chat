@@ -9,10 +9,10 @@ import java.util.Objects;
 import letschat.envio.ListaOnline;
 import letschat.exception.PersistenciaException;
 import letschat.service.IManterUsuario;
-import letschat.util.Comunicacao;
-import letschat.util.Grupo;
-import letschat.util.Mensagem;
-import letschat.util.Usuario;
+import letschat.domain.Comunicacao;
+import letschat.domain.Grupo;
+import letschat.domain.Mensagem;
+import letschat.domain.Usuario;
 
 public class ChatSkeleton extends Thread {
 

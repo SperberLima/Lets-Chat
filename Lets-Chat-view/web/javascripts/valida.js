@@ -26,7 +26,6 @@ function EnviarMsg(msg) {
     
 }
 
-
 var refreshUsers = setInterval(function(){
     
     var http = new XMLHttpRequest();    
@@ -44,35 +43,13 @@ var refreshUsers = setInterval(function(){
             u = xmlDoc.getElementsByTagName("name");            
             
             for (i = 0; i < u.length; i++) {
-               username += ("<li><a>"+u[i].childNodes[0].nodeValue+"</a></li>");
-            }
-        }
-        users.innerHTML = username;
-    };
-    
-    http.open("GET", "/Sala_Chat?acao=userList&type=async", true);
-    http.send();
-    
-},5000);
-
-var refreshUsers = setInterval(function(){
-    
-    var http = new XMLHttpRequest();    
-    var users = document.getElementById("users");
-    
-    http.onreadystatechange = function() {
-        var u;
-        var username = "";
-        var xmlDoc,parser;
-        
-        if (http.readyState == 4 && http.status == 200) {
-            
-            parser = new DOMParser();
-            xmlDoc = parser.parseFromString(http.responseText, "text/xml");            
-            u = xmlDoc.getElementsByTagName("name");            
-            
-            for (i = 0; i < u.length; i++) {
-               username += ("<li><a>"+u[i].childNodes[0].nodeValue+"</a></li>");
+               username += "<li class=\"item_lista\">" +
+                            "<input type=\"radio\" class = \"check\" name = \"cv\" id = \"o" + i + "\" value=\"" + u[i].childNodes[0].nodeValue + "\" checked>" +		
+                            "<label for=\"o" + i + "\">" +
+                                "<div class=\"opcao\">" + u[i].childNodes[0].nodeValue + 
+                                "</div>" +
+                            "</label>"+
+                            "</li>";
             }
         }
         users.innerHTML = username;
@@ -86,7 +63,7 @@ var refreshUsers = setInterval(function(){
 var refreshGrupos = setInterval(function(){
     
     var http = new XMLHttpRequest();    
-    var groups = document.getElementById("groups");
+    var users = document.getElementById("");
     
     http.onreadystatechange = function() {
         var u;
@@ -97,20 +74,25 @@ var refreshGrupos = setInterval(function(){
             
             parser = new DOMParser();
             xmlDoc = parser.parseFromString(http.responseText, "text/xml");            
-            u = xmlDoc.getElementsByTagName("name");            
+            u = xmlDoc.getElementsByTagName("grupo");            
             
             for (i = 0; i < u.length; i++) {
-               username += ("<li><a>"+u[i].childNodes[0].nodeValue+"</a></li>");
+               username += "<li class=\"item_lista\">" +
+                            "<input type=\"radio\" class = \"check\" name = \"cv\" id = \"o" + i + "\" value=\"" + u[i].childNodes[0].nodeValue + "\" checked>" +		
+                            "<label for=\"o" + i + "\">" +
+                                "<div class=\"opcao\">" + u[i].childNodes[0].nodeValue + 
+                                "</div>" +
+                            "</label>"+
+                            "</li>";
             }
         }
-        groups.innerHTML = username;
+        users.innerHTML = users.innerHTML + username;
     };
     
     http.open("GET", "/Sala_Chat?acao=groupList&type=async", true);
     http.send();
     
 },5000);
-
 
 var update = setInterval(function(){
     

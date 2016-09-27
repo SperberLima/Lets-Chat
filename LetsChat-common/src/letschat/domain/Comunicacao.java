@@ -1,4 +1,4 @@
-package letschat.util;
+package letschat.domain;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

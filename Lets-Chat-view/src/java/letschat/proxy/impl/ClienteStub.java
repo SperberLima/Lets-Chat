@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import letschat.util.Mensagem;
+import letschat.domain.Mensagem;
 import letschat.proxy.IChat;
-import letschat.util.Comunicacao;
-import letschat.util.Grupo;
-import letschat.util.Usuario;
+import letschat.domain.Comunicacao;
+import letschat.domain.Grupo;
+import letschat.domain.Usuario;
 
 public class ClienteStub implements IChat<Mensagem> {
 

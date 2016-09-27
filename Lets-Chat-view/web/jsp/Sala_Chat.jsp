@@ -1,4 +1,10 @@
 
+<%@page import="letschat.domain.Usuario"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="letschat.domain.Mensagem"%>
+
+<jsp:useBean id="perfil" class="letschat.domain.Usuario"></jsp:useBean>
+<jsp:useBean id="gals" class="java.util.ArrayList"></jsp:useBean>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -23,8 +29,12 @@
                 <!-- Usuarios -->
 
                 <div class = "usuarios">
-                    <ul>
+                    <ul id="users">
 
+                        
+                        <%
+                            for(int i = 0 ; i < gals.size(); i++ ) {
+                        %>
                         <li class="item_lista">
 
                             <input type="radio" class = "check" name = "cv" id = "o1" value="Marina" checked>		
@@ -34,7 +44,7 @@
                             </label>
 
                         </li>
-
+                        <%}%>
                         <li class="item_lista">
                             <input type="radio" class = "check" name = "cv" id = "o2" value="Luana">		
                             <label for="o2">
@@ -82,7 +92,6 @@
             <div class = "direita">
                 <!-- Mensagens -->
                 <div class="Mensagem" id="msg">
-                    Maffort disse: "Fodasse....";
                 </div>
             </div>
         </div>

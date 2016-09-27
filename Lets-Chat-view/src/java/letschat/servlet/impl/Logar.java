@@ -4,7 +4,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import letschat.convertion.Http_to_Socket;
-import letschat.util.Usuario;
+import letschat.domain.Usuario;
 
 public class Logar {
 
